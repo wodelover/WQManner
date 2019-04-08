@@ -7,5 +7,8 @@
         <file>SystemConf/SerialConf.qml</file>
         <file>SystemConf/SubMenuBtn.qml</file>
         <file>SystemConf/DevRepair.qml</file>
+        <file>common/UserButton/CircleMask.qml</file>
+        <file>common/UserButton/Ripple.qml</file>
+        <file>common/UserButton/UserButton.qml</file>
     </qresource>
 </RCC>

@@ -48,7 +48,6 @@ Item {
                 onClicked: {
                     // 设置当前点击的下表序号
                     currentIndex = index
-                    highlighted = true
                 }
 
                 ToolTip{

@@ -18,8 +18,9 @@ Item {
         id: subMenuSwapView
 
         x: submenuPane.width + 5
+        y: 2
         width: parent.width - submenuPane.width - 10
-        height:  parent.height
+        height:  parent.height - 4
         clip: true
         // 设置垂直方向上滚动
         orientation: Qt.Vertical
