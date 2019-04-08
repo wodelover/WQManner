@@ -16,17 +16,23 @@ Item {
 
     SwipeView{
         id: subMenuSwapView
+
+        x: submenuPane.width + 5
+        width: parent.width - submenuPane.width - 10
+        height:  parent.height
+        clip: true
         // 设置垂直方向上滚动
         orientation: Qt.Vertical
         // 串口配置工具页面
         SerialConf{
         }
         // 硬件系统设置页面
-        SerialConf{
+        DevRepair{
         }
     }
 
     Pane{
+       id: submenuPane
        y: subDurationHeight
        width: subMenuWidth
        height: parent.height - subDurationHeight * 2
@@ -36,7 +42,10 @@ Item {
        Material.elevation: 3
        // 实例化左侧子菜单按钮所有控件
         SubMenuBtn{
-        anchors.fill: parent
+            anchors.fill: parent
+            onCurrentIndexChanged: {
+                subMenuSwapView.currentIndex = currentIndex
+            }
         }
    }
 }

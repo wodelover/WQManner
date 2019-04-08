@@ -12,7 +12,7 @@ Item {
 
     // 定义单个图标的宽度和图标字体的大小
     property int itemWidth: subMenuBtn.width
-    property int iconSize: subMenuBtn.width / 2
+    property int iconSize: parent.width / 2
 
     //  定义记录当前选中的子菜单下标索引编号
     property int currentIndex: 0
@@ -36,19 +36,19 @@ Item {
         Item {
             width: itemWidth
             height: itemWidth
-            TabButton{
+            Button{
                 width: itemWidth
                 height: itemWidth
                 hoverEnabled: true
                 font.family: iconFamilyName
                 font.pointSize: iconSize
                 text: btIconCode
-//                flat: true //设置无边框显示
-//                highlighted: hovered //设置高亮显示
+                flat: true //设置无边框显示
+                highlighted: hovered //设置高亮显示
                 onClicked: {
                     // 设置当前点击的下表序号
                     currentIndex = index
-//                    highlighted = true
+                    highlighted = true
                 }
 
                 ToolTip{
