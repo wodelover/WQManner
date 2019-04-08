@@ -1,0 +1,10 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>SystemConf/SystemConf.qml</file>
+        <file>DataChart/DataChart.qml</file>
+        <file>SystemConf/SerialConf.qml</file>
+        <file>SystemConf/SubMenuBtn.qml</file>
+    </qresource>
+</RCC>
