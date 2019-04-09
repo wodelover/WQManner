@@ -9,6 +9,13 @@ ApplicationWindow {
     visible: true
     width: 800
     height: 480
+
+    // 由于没有显卡，暂时固定程序大小，否则程序出错
+    maximumWidth: 800
+    maximumHeight: 480
+    minimumWidth: 800
+    minimumHeight: 480
+
     title: qsTr("WQMannger")
 
     // 定义图标的大小
@@ -25,6 +32,7 @@ ApplicationWindow {
         id: swipeView
         anchors.fill: parent
         currentIndex: tabBar.currentIndex
+        interactive: true
 
         // 系统配置窗口
         SystemConf{
@@ -32,8 +40,9 @@ ApplicationWindow {
 
         //  系统数据显示窗口
         DataChart{
-
         }
+//        SpeedChartShow{
+//        }
     }
 
     header: Pane{

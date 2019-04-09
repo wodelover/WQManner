@@ -14,39 +14,47 @@ Item {
     // 定义左侧子菜单列表的宽度
     property int subDurationHeight: 15
 
-    SwipeView{
-        id: subMenuSwapView
-
+    Frame{
         x: submenuPane.width + 5
-        y: 2
+        y: subDurationHeight
         width: parent.width - submenuPane.width - 10
-        height:  parent.height - 4
-        clip: true
-        // 设置垂直方向上滚动
-        orientation: Qt.Vertical
-        // 串口配置工具页面
-        SerialConf{
-        }
-        // 硬件系统设置页面
-        DevRepair{
+        height:  parent.height - subDurationHeight * 2
+        SwipeView{
+            id: subMenuSwapView
+            anchors.fill: parent
+            clip: true
+            // 设置垂直方向上滚动
+            orientation: Qt.Vertical
+
+            onCurrentIndexChanged: {
+                subMenuBtn.currentIndex = currentIndex
+            }
+
+            // 串口配置工具页面
+            SerialConf{
+            }
+            // 硬件系统设置页面
+            DevRepair{
+            }
         }
     }
 
     Pane{
-       id: submenuPane
-       y: subDurationHeight
-       width: subMenuWidth
-       height: parent.height - subDurationHeight * 2
-       contentWidth: subMenuWidth
-       contentHeight: parent.height - subDurationHeight * 2
-       padding: 0
-       Material.elevation: 3
-       // 实例化左侧子菜单按钮所有控件
+        id: submenuPane
+        y: subDurationHeight
+        width: subMenuWidth
+        height: parent.height - subDurationHeight * 2
+        contentWidth: subMenuWidth
+        contentHeight: parent.height - subDurationHeight * 2
+        padding: 0
+        Material.elevation: 3
+        // 实例化左侧子菜单按钮所有控件
         SubMenuBtn{
+            id: subMenuBtn
             anchors.fill: parent
             onCurrentIndexChanged: {
                 subMenuSwapView.currentIndex = currentIndex
             }
         }
-   }
+    }
 }

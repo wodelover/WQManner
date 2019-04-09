@@ -6,10 +6,11 @@
 */
 import QtQuick 2.0
 import QtCharts 2.3
+import QtQuick.Controls 2.4
 
 Item {
-
-
+    property int index : 0
+    id: mainchart
     ChartView{
         id: chartView
         anchors.fill: parent
@@ -18,41 +19,38 @@ Item {
         antialiasing: true
         // 显示外边框
         dropShadowEnabled:true
-
-        animationOptions: ChartView.AllAnimations
+        animationOptions: ChartView.SeriesAnimations
+        smooth: true
 
         LineSeries {
             id: lineSeries
-            useOpenGL: true
-            XYPoint { x: 0  ; y: 0.0 }
-            XYPoint { x: 1.1; y: 3.8 }
-            XYPoint { x: 1.9; y: 2.4 }
-            XYPoint { x: 2.1; y: 2.1 }
-            XYPoint { x: 2.9; y: 2.6 }
-            XYPoint { x: 3.4; y: 2.3 }
-            XYPoint { x: 4.1; y: 3.1 }
-            Component.onCompleted: {
-                lineSeries.append(3.1,2.8)
-                lineSeries.append(2.1,2.6)
-                lineSeries.append(1.1,2.2)
-                chartView.update()
+            //                axisX: DateTimeAxis {
+            //                    format: "yyyy MMM"
+            //                    tickCount: 5
+            //                }
+            axisY: ValueAxis {
+                min: 0
+                tickCount: 6
+                minorTickCount: 0
+                max: 1
+            }
+            axisX:ValueAxis {
+                min: 0
+                max: index + 10
+            }
+
+            Timer{
+                interval: 1000
+                running: mainchart.visible
+                repeat: true
+                onTriggered: {
+                    lineSeries.append(index,Math.random(1))
+                    index=index+1
+                    if(index>40){
+                        chartView.scrollRight(10)
+                    }
+                }
             }
         }
-        DateTimeAxis{
-            id: xAxis
-        }
-
-//        Timer{
-//            interval: 1000
-//            running: true
-//            repeat: true
-//            property double a : 5.1
-//            onTriggered: {
-//                lineSeries.append(a++,3)
-//                console.log(a)
-//            }
-//        }
-
     }
-
 }
